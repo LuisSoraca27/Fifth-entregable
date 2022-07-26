@@ -15,13 +15,18 @@ const login = () => {
         navigate('/pokedex')
     }
     return (
-        <div>
+        <div className='login'> 
+          <h4>¡Hola entrenador!</h4>
+          <h5>Para poder comenzar, dame tu nombre</h5>
           <form onSubmit={submit}>
-          <input type="text" 
+          <input 
+          className='input'
+          type="text" 
             value={userName}
             onChange={e => setUserName(e.target.value)}
+            placeholder='Tu nombre...'
             />
-            <button>submit</button>
+            <button className='button'>Comenzar</button>
           </form>
         </div>
     );
