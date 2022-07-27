@@ -17,28 +17,53 @@ const Pokedex = () => {
     const [pokemons, setPokemons] = useState([])
     const [pokemonSearch, setPokemonSearch] = useState('')
     const [type, setType] = useState([])
+    const [previous, setPrevious] = useState('')
+    const [next, setNext] = useState('')
 
     const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('https://pokeapi.co/api/v2/pokemon/')
-            .then(res => setPokemons(res.data.results))
+            .then(res => {
+                setPokemons(res.data.results)
+                setNext(res.data.next)
+                setPrevious(res.data.previous)
+            })
 
         axios.get('https://pokeapi.co/api/v2/type/')
             .then(res => setType(res.data.results))
     }, [])
     console.log(pokemons)
+    console.log(next)
+    console.log(previous)
     // console.log(type)
 
     const search = (e) => {
         e.preventDefault();
-        alert(pokemonSearch)
         navigate(`/pokedex/${pokemonSearch}`);
     }
 
     const filtertype = (e) => {
         axios.get(e.target.value)
             .then(res => setPokemons(res.data.pokemon))
+    }
+
+    const nextpage = () => {
+        axios.get(next)
+            .then(res => {
+                setPokemons(res.data.results)
+                setNext(res.data.next)
+                setPrevious(res.data.previous)
+            })
+    }
+
+    const previouspage = () => {
+        axios.get(previous)
+            .then(res => {
+                setPokemons(res.data.results)
+                setNext(res.data.next)
+                setPrevious(res.data.previous)
+            })
     }
 
     return (
@@ -65,37 +90,47 @@ const Pokedex = () => {
             <p className='welcome-pokedex'>
                 <span>Bienvenido {user},</span> aquí podrás encontrar tu pokemón favorito
             </p>
-           <div className='pokedex-search'>
-           <form onSubmit={search} >
-                <input
-                    className='input-pokedex'
-                    type="text"
-                    value={pokemonSearch}
-                    onChange={e => setPokemonSearch(e.target.value)}
-                    placeholder='Buscar por nombre'
-                />
-                <button className='button-pokedex'>Search</button>
-            </form>
-            <select onChange={filtertype} className='select-pokedex'>
-                <option value="">Todos los pokemones</option>
-                {
-                    type.map(pokemonType => (
-                        <option
-                            value={pokemonType.url}
-                            key={pokemonType.url}
-                        >
-                            {pokemonType.name}
-                        </option>
-                    ))
-                }
-            </select>
-           </div>
+            <div className='pokedex-search'>
+                <form onSubmit={search} >
+                    <input
+                        className='input-pokedex'
+                        type="text"
+                        value={pokemonSearch}
+                        onChange={e => setPokemonSearch(e.target.value)}
+                        placeholder='Buscar por nombre'
+                    />
+                    <button className='button-pokedex'>Search</button>
+
+                </form>
+                <select onChange={filtertype} className='select-pokedex'>
+                    <option value="">Todos los pokemones</option>
+                    {
+                        type.map(pokemonType => (
+                            <option
+                                value={pokemonType.url}
+                                key={pokemonType.url}
+                            >
+                                {pokemonType.name}
+                            </option>
+                        ))
+                    }
+                </select>
+            </div>
             <div className='container-card'>
                 {
                     pokemons.map(pokemon => (
                         <PokemonItem pokemonUrl={pokemon.url ? pokemon.url : pokemon.pokemon.url} key={pokemon.name ? pokemon.name : pokemon.pokemon.name} />
                     ))
                 }
+            </div>
+            <div className='page'>
+                {previous !== null ? <button onClick={previouspage}>
+                    <i className="fa-solid fa-angles-left"></i>
+                </button> : ' '}
+
+                {next !== null ? <button onClick={nextpage}>
+                    <i className="fa-solid fa-angles-right"></i>
+                </button> : ' '}
             </div>
         </div>
     );

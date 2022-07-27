@@ -12,7 +12,7 @@ const PokemonItem = ({ pokemonUrl }) => {
         axios.get(pokemonUrl)
             .then(res => setPokemon(res.data))
     }, [])
-    console.log(pokemon)
+    // console.log(pokemon)
     return (
         <div
             onClick={() => navigate(`/pokedex/${pokemon.id}`)}

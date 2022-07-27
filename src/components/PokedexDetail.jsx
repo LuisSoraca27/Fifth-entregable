@@ -12,12 +12,12 @@ const PokedexDetail = () => {
 
     useEffect(() => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-        .then(res => setPokemon(res.data))
-    },[])
+            .then(res => setPokemon(res.data))
+    }, [])
     console.log(pokemon)
     return (
         <div>
-             <footer className='portada'>
+            <footer className='portada'>
                 <div className='color-red'>
                     <img src={rectangle147} alt="" />
                 </div>
@@ -31,8 +31,8 @@ const PokedexDetail = () => {
                 </div>
             </footer>
             <div className='container-info-pokemon'>
-                <div  className={`portada-pokemon ${pokemon.types?.[0].type.name}`}>
-                <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
+                <div className={`portada-pokemon ${pokemon.types?.[0].type.name}`}>
+                    <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
                 </div>
                 <div className='container-id'>
                     <div className='id-pokemon'>
@@ -40,7 +40,7 @@ const PokedexDetail = () => {
                     </div>
                 </div>
                 <div className='name-pokemon'>
-                    <h5>________________________________<span>{pokemon.name}</span>________________________________ </h5> 
+                    <h5>________________________________<span>{pokemon.name}</span>________________________________ </h5>
                 </div>
                 <div className='pokemon-stats'>
                     <div className='stats'>
@@ -53,24 +53,69 @@ const PokedexDetail = () => {
                     </div>
                 </div>
 
-                <div className='pokemon-stats-type'>
-                    <h3>Type</h3>
-                    <div className='type1'>
-                        <h4>{pokemon.types?.[0].type.name}</h4>
+                <div className='container-stats'>
+                    <div className='pokemon-stats-type'>
+                        <h3>Type</h3>
+                        <div className='type1'>
+                            <h4>{pokemon.types?.[0].type.name}</h4>
                         </div>
                         <div className='type2'>
-    
+                            <h4>{pokemon.types?.[1]?.type.name}</h4>
                         </div>
-                </div>
-                <div className='pokemon-stats-skills'>
-                    <h3>Skills</h3>
-                    <div className='skills1'>
-
                     </div>
-                    <div className='skills2'>
-
+                    <div className='pokemon-stats-skills'>
+                        <div>
+                            <h3>Skills</h3>
+                        </div>
+                        <div className='skills1'>
+                            <h4> {pokemon.abilities?.[0].ability.name}</h4>
+                        </div>
+                        <div className='skills2'>
+                            <h4> {pokemon.abilities?.[1].ability.name}</h4>
+                        </div>
                     </div>
                 </div>
+                <div className='container-statis'>
+                    <h1>Statis</h1>
+                    <div className='statis'>
+                        <h3>HP</h3>
+                        <div className={`speed ${pokemon.types?.[0].type.name}`}>
+                        <h4>{pokemon.stats?.[0].base_stat}/150</h4>
+                        </div>
+                    </div>
+                    <div className='statis'>
+                        <h3>ATTACK</h3>
+                        <div className={`speed ${pokemon.types?.[0].type.name}`}>
+                        <h4>{pokemon.stats?.[1].base_stat}/150</h4>
+                        </div>
+                    </div>
+                    <div className='statis'>
+                        <h3>DEFENSES</h3>
+                        <div className={`speed ${pokemon.types?.[0].type.name}`}>
+                            <h4>{pokemon.stats?.[2].base_stat}/150</h4>
+                        </div>
+                    </div>
+                    <div className='statis'>
+                        <h3>SPEED</h3>
+                        <div className={`speed ${pokemon.types?.[0].type.name}`}>
+                        <h4>{pokemon.stats?.[5].base_stat}/150</h4>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div className='container-movements'>
+                <h1>Movements</h1>
+                 <div className='moves'>
+                 {
+                    pokemon.moves?.map(move => (
+                        <p>
+                            {move.move.name}
+                        </p>
+                    ))
+                }
+                 </div>
             </div>
         </div>
     );

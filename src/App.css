@@ -178,11 +178,9 @@ html {
 
 .card-pokemon {
   width: 280px;
-  border: 1px solid black;
   flex-wrap: wrap;
   height: 380px;
   margin: 10px;
-  background-color: orangered;
   border-radius: 4px;
   padding: 7px;
 }
@@ -190,8 +188,6 @@ html {
 .img-pokemon {
   height: 30%;
   width: 100%;
-  background: linear-gradient(176.37deg, #F96D6F -32.26%, #E35825 22.55%, #E8AE1B 125.72%);
-
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
@@ -236,6 +232,24 @@ html {
   font-weight: bold;
 }
 
+.page {
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
+.page button {
+width: 60px;
+height: 60px;
+border-radius: 9px;
+margin-left: 17px;
+margin-right: 17px;
+background-color: #FE1936;
+border: none;
+}
+
+button i {
+  font-size: 20px;
+  color: white;
+}
 /* 
 ************************************************************************** */
 
@@ -243,7 +257,6 @@ html {
   width: 80%;
   margin: auto;
   margin-top: 100px;
-  height: 1000px;
   padding: 3px;
   background: #FFFFFF;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.15);
@@ -305,6 +318,10 @@ h5 span {
   margin-bottom: 6px;
 }
 
+.container-stats {
+  margin-bottom: 70px;
+}
+
 .pokemon-stats-type {
   width: 50%;
   text-align: center;
@@ -319,6 +336,7 @@ h5 span {
   border-radius: 2px;
   margin-right: 3%;
   margin: 15px;
+  padding: 10px;
 }
 
 .type2 {
@@ -329,7 +347,9 @@ h5 span {
   border-radius: 2px;
   margin-left: 3%;
   margin: 15px;
+  padding: 10px;
 }
+
 
 .pokemon-stats-skills {
   width: 50%;
@@ -343,8 +363,8 @@ h5 span {
   height: 40px;
   border: 1px solid #D3D3D3;
   border-radius: 2px;
-  margin-right: 3%;
   margin: 15px;
+  padding: 10px;
 }
 
 .skills2 {
@@ -355,4 +375,62 @@ h5 span {
   border-radius: 2px;
   margin-left: 3%;
   margin: 15px;
+  padding: 10px;
+}
+
+.container-statis {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.container-statis h1 {
+  margin-bottom: 25px;
+}
+
+.statis {
+  width: 25%;
+  display: inline-block;
+}
+.statis h3 {
+  margin-bottom: 20px;
+}
+
+.speed {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.container-movements {
+  width: 80%;
+  margin: auto;
+  margin-top: 60px;
+  padding: 35px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  height: 550px;
+  margin-bottom: 65px;
+}
+
+.container-movements h1{
+  margin-bottom: 30px;
+}
+
+.moves {
+  overflow-y: scroll;
+  height: 420px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.moves p {
+  padding: 15px;
+  margin: 10px;
+  background: #E5E5E5;
+  border-radius: 25px;
 }
