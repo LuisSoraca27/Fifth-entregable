@@ -88,7 +88,7 @@ const Pokedex = () => {
             </footer>
 
             <p className='welcome-pokedex'>
-                <span>Bienvenido {user},</span> aquí podrás encontrar tu pokemón favorito
+                <span>Welcome {user}</span>, here you can find your favorite pokemón.
             </p>
             <div className='pokedex-search'>
                 <form onSubmit={search} >
@@ -97,13 +97,13 @@ const Pokedex = () => {
                         type="text"
                         value={pokemonSearch}
                         onChange={e => setPokemonSearch(e.target.value)}
-                        placeholder='Buscar por nombre'
+                        placeholder='Search by name'
                     />
                     <button className='button-pokedex'>Search</button>
 
                 </form>
                 <select onChange={filtertype} className='select-pokedex'>
-                    <option value="">Todos los pokemones</option>
+                    <option value="">All pokemon</option>
                     {
                         type.map(pokemonType => (
                             <option
