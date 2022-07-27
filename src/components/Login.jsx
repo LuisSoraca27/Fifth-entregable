@@ -16,17 +16,17 @@ const login = () => {
     }
     return (
         <div className='login'> 
-          <h4>¡Hola entrenador!</h4>
-          <h5>Para poder comenzar, dame tu nombre</h5>
+          <h4>¡Hi coach!</h4>
+          <h5>To start, give me your name</h5>
           <form onSubmit={submit}>
           <input 
           className='input'
           type="text" 
             value={userName}
             onChange={e => setUserName(e.target.value)}
-            placeholder='Tu nombre...'
+            placeholder='Your name...'
             />
-            <button className='button'>Comenzar</button>
+            <button className='button'>Start</button>
           </form>
         </div>
     );
