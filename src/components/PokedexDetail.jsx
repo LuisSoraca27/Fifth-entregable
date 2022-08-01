@@ -13,6 +13,7 @@ const PokedexDetail = () => {
     useEffect(() => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
             .then(res => setPokemon(res.data))
+        window.scrollTo(0, 0)
     }, [])
     console.log(pokemon)
     return (
@@ -59,9 +60,12 @@ const PokedexDetail = () => {
                         <div className='type1'>
                             <h4>{pokemon.types?.[0].type.name}</h4>
                         </div>
-                        <div className='type2'>
-                            <h4>{pokemon.types?.[1]?.type.name}</h4>
-                        </div>
+                        {
+                            pokemon.type?.[1] === undefined ? null :
+                                <div className='type2'>
+                                    <h4>{pokemon.types?.[1]?.type.name}</h4>
+                                </div>
+                        }
                     </div>
                     <div className='pokemon-stats-skills'>
                         <div>
@@ -70,9 +74,12 @@ const PokedexDetail = () => {
                         <div className='skills1'>
                             <h4> {pokemon.abilities?.[0].ability.name}</h4>
                         </div>
-                        <div className='skills2'>
-                            <h4> {pokemon.abilities?.[1].ability.name}</h4>
-                        </div>
+                        {
+                            pokemon.abilities?.[1] === undefined ? null :
+                                <div className='skills2'>
+                                    <h4> {pokemon.abilities?.[1].ability.name}</h4>
+                                </div>
+                        }
                     </div>
                 </div>
                 <div className='container-statis'>
@@ -80,13 +87,13 @@ const PokedexDetail = () => {
                     <div className='statis'>
                         <h3>HP</h3>
                         <div className={`speed ${pokemon.types?.[0].type.name}`}>
-                        <h4>{pokemon.stats?.[0].base_stat}/150</h4>
+                            <h4>{pokemon.stats?.[0].base_stat}/150</h4>
                         </div>
                     </div>
                     <div className='statis'>
                         <h3>ATTACK</h3>
                         <div className={`speed ${pokemon.types?.[0].type.name}`}>
-                        <h4>{pokemon.stats?.[1].base_stat}/150</h4>
+                            <h4>{pokemon.stats?.[1].base_stat}/150</h4>
                         </div>
                     </div>
                     <div className='statis'>
@@ -98,24 +105,24 @@ const PokedexDetail = () => {
                     <div className='statis'>
                         <h3>SPEED</h3>
                         <div className={`speed ${pokemon.types?.[0].type.name}`}>
-                        <h4>{pokemon.stats?.[5].base_stat}/150</h4>
+                            <h4>{pokemon.stats?.[5].base_stat}/150</h4>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
             <div className='container-movements'>
                 <h1>Movements</h1>
-                 <div className='moves'>
-                 {
-                    pokemon.moves?.map(move => (
-                        <p>
-                            {move.move.name}
-                        </p>
-                    ))
-                }
-                 </div>
+                <div className='moves'>
+                    {
+                        pokemon.moves?.map(move => (
+                            <p key={move.move.name}>
+                                {move.move.name}
+                            </p>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     );

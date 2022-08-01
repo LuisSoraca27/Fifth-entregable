@@ -54,6 +54,7 @@ const Pokedex = () => {
                 setPokemons(res.data.results)
                 setNext(res.data.next)
                 setPrevious(res.data.previous)
+                window.scrollTo(0,0)
             })
     }
 
@@ -63,6 +64,7 @@ const Pokedex = () => {
                 setPokemons(res.data.results)
                 setNext(res.data.next)
                 setPrevious(res.data.previous)
+                window.scrollTo(0,0)
             })
     }
 

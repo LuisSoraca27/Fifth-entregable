@@ -15,32 +15,32 @@ const PokemonItem = ({ pokemonUrl }) => {
     // console.log(pokemon)
     return (
         <div
-            onClick={() => navigate(`/pokedex/${pokemon.id}`)}
+            onClick={() => {navigate(`/pokedex/${pokemon.id}`)}}
             className={`card-pokemon ${pokemon.types?.[0].type.name}`}
         >
             <div className={`img-pokemon ${pokemon.types?.[0].type.name}`}>
                 <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
             </div>
             <div className='info-pokemon'>
-                <h2 className={`${pokemon.types?.[0].type.name}`+'color'}
+                <h2 className={`${pokemon.types?.[0].type.name}` + 'color'}
                 >{pokemon.name}</h2>
                 <span>{pokemon.types?.[0].type.name}</span>
                 <div className='statistics-pokemon'>
-                <div className="statistics-info">
-                 <span>HP</span><p>{pokemon.stats?.[0].base_stat}</p>
+                    <div className="statistics-info">
+                        <span>HP</span><p>{pokemon.stats?.[0].base_stat}</p>
+                    </div>
+                    <div className="statistics-info">
+                        <span>ATTACK</span><p>{pokemon.stats?.[1].base_stat}</p>
+                    </div>
+                    <div className="statistics-info">
+                        <span>DEFENSES</span><p>{pokemon.stats?.[2].base_stat}</p>
+                    </div>
+                    <div className="statistics-info">
+                        <span>SPEED</span><p>{pokemon.stats?.[5].base_stat}</p>
+                    </div>
                 </div>
-                <div className="statistics-info">
-                  <span>ATTACK</span><p>{pokemon.stats?.[1].base_stat}</p>
-                </div>
-                <div className="statistics-info">
-                    <span>DEFENSES</span><p>{pokemon.stats?.[2].base_stat}</p>
-                </div>
-                <div className="statistics-info">
-                    <span>SPEED</span><p>{pokemon.stats?.[5].base_stat}</p>
-                </div>
-            </div>  
             </div>
-          
+
         </div>
     );
 };
